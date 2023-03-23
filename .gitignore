@@ -5,7 +5,6 @@
 /.pnp
 .pnp.js
 .husky
-/src
 
 # testing
 /coverage
