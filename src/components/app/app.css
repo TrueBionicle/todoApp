@@ -1,0 +1,57 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+    font: 300 14px / 1.4em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: rgb(245 245 245);
+
+}
+
+ul {
+    margin: 0;
+    list-style: none;
+    padding-left: 0;
+}
+
+span {
+    padding-top: 5px;
+}
+
+.todo {
+    margin: 0 auto;
+    width: 600px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px, rgba(0, 0, 0, 0.1) 0px 25px 50px 0px;
+    margin-top: 10%;
+}
+
+.main {
+    position: relative;
+    background-color: #fff;
+    border-top: 1px solid rgb(230, 230, 230);
+    z-index: 2;
+}
+
+
+.footer {
+    display: flex;
+    height: 40px;
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    height: 50px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    overflow: hidden;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2),
+        0 8px 0 -3px #f6f6f6,
+        0 9px 1px -3px rgba(0, 0, 0, 0.2),
+        0 16px 0 -6px #f6f6f6,
+        0 17px 2px -6px rgba(0, 0, 0, 0.2);
+}

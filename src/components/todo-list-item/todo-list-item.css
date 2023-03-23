@@ -1,0 +1,49 @@
+.task-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.todo-list-item {
+    cursor: pointer;
+}
+
+.delete {
+    margin-left: 3%;
+    margin-right: 5px;
+    border: none;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background: no-repeat center/40% url('./img/close.svg');
+    opacity: 0.5;
+}
+
+.delete:hover {
+    opacity: 1;
+}
+
+.checkBoxBtn {
+    appearance: none;
+    margin-right: 20px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid rgb(233, 233, 233);
+    border-radius: 100%;
+    cursor: pointer;
+    background-color: #fff;
+
+}
+
+.checkBoxBtn:checked {
+    background: no-repeat center/70% url('./img/check.svg');
+}
+
+.checkBoxBtn:hover {
+    border-color: rgb(182, 182, 182)
+}
+
+.done {
+    text-decoration: line-through;
+    color: rgba(202, 202, 202, 0.795);
+}

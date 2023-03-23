@@ -1,0 +1,10 @@
+.h1 {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(175, 47, 47, 0.15);
+    font-size: 80px;
+    font-weight: normal;
+    text-align: center;
+}

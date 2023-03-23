@@ -1,0 +1,14 @@
+.item-add-form {
+    display: flex;
+    height: 66px;
+}
+
+.form-control {
+    font-size: 24px;
+    font-style: italic;
+    padding: 16px 16px 16px 60px;
+    width: 100%;
+    border: none;
+    line-height: 1.4em;
+    box-shadow: rgba(0, 0, 0, 0.03) 0px -2px 1px inset;
+}

@@ -1,0 +1,11 @@
+.task-counter {
+    display: flex;
+    align-items: center;
+    width: 300px;
+}
+
+.task-counter-item {
+    padding: 0;
+    font-size: 18px;
+    margin-left: 20px;
+}

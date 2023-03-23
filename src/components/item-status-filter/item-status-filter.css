@@ -1,0 +1,51 @@
+.status-container {
+    display: flex;
+    width: 100%;
+    justify-content: start;
+}
+
+.button-wrapper {
+    margin-left: 20px;
+
+}
+
+.status-btn {
+    width: 100%;
+    margin-top: 5px;
+    padding: 5px 5px;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    color: rgb(117, 117, 117);
+
+    border: 1px solid rgba(175, 47, 47, 0);
+    border-radius: 5px;
+}
+
+.status-btn:hover:not(.clear) {
+    border-color: rgba(175, 47, 47, 0.199);
+}
+
+.active {
+    border-color: rgba(175, 47, 47, 0.199);
+    border-radius: 5px;
+}
+
+.clear {
+    margin-left: 35%;
+}
+
+.clear:hover {
+    text-decoration: underline;
+}
+
+.show-item {
+    display: none;
+}
+
+.created-time {
+    font-size: 12px;
+    color: grey;
+    margin-left: auto;
+}
