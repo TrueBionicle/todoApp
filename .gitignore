@@ -4,13 +4,14 @@
 /node_modules
 /.pnp
 .pnp.js
+/.husky
 
 # testing
 /coverage
 
 # production
 /build
-/.husky
+
 
 # misc
 .DS_Store
