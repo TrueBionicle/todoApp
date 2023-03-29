@@ -20,13 +20,15 @@ export default class App extends React.Component {
     filter: 'all',
   }
 
-  createTodoItem(label) {
+  createTodoItem(label, minutes = 0, seconds = 0) {
     return {
       label,
       important: false,
       done: false,
       id: this.maxId++,
       date: new Date(),
+      timerMinutes: minutes.toString().padStart(2, '0'),
+      timerSeconds: seconds.toString().padStart(2, '0'),
     }
   }
 
@@ -41,10 +43,10 @@ export default class App extends React.Component {
     })
   }
 
-  onItemAdded = (text) => {
+  onItemAdded = (text, minutes, seconds) => {
     if (text) {
       this.setState(({ todoData }) => {
-        const newItem = this.createTodoItem(text)
+        const newItem = this.createTodoItem(text, minutes, seconds)
         const newArray = [...todoData, newItem]
         return {
           todoData: newArray,
@@ -114,7 +116,10 @@ export default class App extends React.Component {
     return (
       <div className="todo-app">
         <AppHeader />
-        <ItemAddForm onAddItem={this.onItemAdded} />
+        <div className="form-container">
+          <ItemAddForm onAddItem={this.onItemAdded} />
+          {/* <AddTimer onCreateTimer={this.createTimer} /> */}
+        </div>
         <div className="main">
           <TodoList
             todos={visibleItems}

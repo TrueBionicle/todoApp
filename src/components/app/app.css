@@ -26,6 +26,10 @@ span {
     margin-top: 10%;
 }
 
+.form-container {
+    display: flex;
+}
+
 .main {
     position: relative;
     background-color: #fff;

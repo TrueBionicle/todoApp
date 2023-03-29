@@ -1,0 +1,43 @@
+.timer-container {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    flex-wrap: wrap;
+}
+
+.timer-start {
+    padding: 0;
+    margin: 0;
+    border: none;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    background: no-repeat center/100% url('./img/start.svg');
+    opacity: 0.5;
+}
+
+.timer-pause {
+    padding: 0;
+    margin: 0 5px 0 5px;
+
+    border: 1px solid grey;
+    border-radius: 5px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    background: no-repeat center/100% url('./img/pause.svg');
+    opacity: 0.5;
+}
+
+.timer-time {
+    margin: 0;
+    font-size: 16px;
+    color: grey;
+    padding: 0;
+}
+
+.time-end {
+    font-size: 14px;
+    color: grey;
+    padding: 0;
+}
