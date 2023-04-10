@@ -30,3 +30,7 @@
 .kostil {
     display: none;
 }
+
+.error {
+    background-color: rgb(218, 130, 130);
+}

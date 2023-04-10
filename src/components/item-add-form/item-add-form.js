@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import './item-add-form.css'
+// import { th } from 'date-fns/locale'
 
 export default class ItemAddForm extends Component {
   state = {
@@ -15,27 +16,21 @@ export default class ItemAddForm extends Component {
     })
   }
 
-  onMinutesChange = (e) => {
-    if (e.target.value > 999) {
-      e.target.value = 999
+  onSetTime = (e, option) => {
+    if (isNaN(+e.target.value)) {
+      e.target.classList.add('error')
+    } else {
+      e.target.classList.remove('error')
     }
+    e.target.value = e.target.value.replace(/\D/g, '').slice(0, 3)
     this.setState({
-      minutes: e.target.value,
-    })
-  }
-  onSecondsChange = (e) => {
-    if (e.target.value > 59) {
-      e.target.value = 59
-    }
-    this.setState({
-      seconds: e.target.value,
+      [option]: e.target.value,
     })
   }
 
   onSubmit = (e) => {
     e.preventDefault()
     this.props.onAddItem(this.state.label, this.state.minutes, this.state.seconds)
-    console.log(this.state)
     this.setState({
       label: '',
       minutes: 0,
@@ -56,8 +51,20 @@ export default class ItemAddForm extends Component {
           placeholder="What needs to be done?"
           value={this.state.label}
         />
-        <input type={'number'} className="addtimer-item" placeholder="Min" onChange={this.onMinutesChange}></input>
-        <input type={'number'} className="addtimer-item" placeholder="Sec" onChange={this.onSecondsChange}></input>
+        <input
+          className="addtimer-item"
+          placeholder="Min"
+          onChange={(e) => {
+            this.onSetTime(e, 'minutes')
+          }}
+        ></input>
+        <input
+          className="addtimer-item"
+          placeholder="Sec"
+          onChange={(e) => {
+            this.onSetTime(e, 'seconds')
+          }}
+        ></input>
         <button className="kostil"></button>
       </form>
     )

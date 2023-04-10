@@ -20,7 +20,7 @@ export default class App extends React.Component {
     filter: 'all',
   }
 
-  createTodoItem(label, minutes = 0, seconds = 0) {
+  createTodoItem(label, minutes = 0, seconds = 59) {
     return {
       label,
       important: false,
@@ -58,6 +58,7 @@ export default class App extends React.Component {
   onToggleDone = (id) => {
     this.setState(({ todoData }) => {
       const idx = todoData.findIndex((el) => el.id === id)
+
       const oldItem = todoData[idx]
       const newItem = { ...oldItem, done: !oldItem.done }
       const newArray = [...todoData.slice(0, idx), newItem, ...todoData.slice(idx + 1)]
@@ -110,15 +111,24 @@ export default class App extends React.Component {
     }
   }
 
+  updateTime = (id, minutes, seconds) => {
+    this.setState(({ todoData }) => {
+      const idx = todoData.findIndex((el) => el.id === id)
+      todoData[idx].timerMinutes = minutes
+      todoData[idx].timerSeconds = seconds
+      console.log(todoData[idx].timerSeconds, seconds)
+    })
+  }
+
   render() {
     const { todoData, filter } = this.state
     const visibleItems = this.filter(todoData, filter)
+    // console.log('visible', visibleItems)
     return (
       <div className="todo-app">
         <AppHeader />
         <div className="form-container">
           <ItemAddForm onAddItem={this.onItemAdded} />
-          {/* <AddTimer onCreateTimer={this.createTimer} /> */}
         </div>
         <div className="main">
           <TodoList
@@ -127,6 +137,7 @@ export default class App extends React.Component {
               this.deleteItem(id)
             }}
             onToggleDone={this.onToggleDone}
+            onUpdateTime={this.updateTime}
           />
           <div className="footer">
             <TaskCounter taskCounter={this.taskCounter()} />

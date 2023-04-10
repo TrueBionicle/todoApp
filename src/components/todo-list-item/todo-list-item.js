@@ -19,8 +19,7 @@ export default class TodoListItem extends React.Component {
   }
 
   render() {
-    const { label, date, onDeleted, onToggleDone, done, id, timerMinutes, timerSeconds } = this.props
-    console.log(label, timerMinutes, timerSeconds)
+    const { label, date, onDeleted, onToggleDone, done, id, timerMinutes, timerSeconds, onUpdateTime } = this.props
     return (
       <div className="task-container">
         <input checked={done} type="checkbox" id={id} className="checkBoxBtn" onChange={onToggleDone}></input>
@@ -30,7 +29,13 @@ export default class TodoListItem extends React.Component {
             <p className="todo-list-item-label">{label}</p>
           </div>
         </label>
-        <Timer timerMinutes={timerMinutes} timerSeconds={timerSeconds} />
+        <Timer
+          id={id}
+          timerMinutes={timerMinutes}
+          timerSeconds={timerSeconds}
+          doneStatus={done}
+          onUpdateTime={onUpdateTime}
+        />
         <span className="created-time">Created {formatDistanceToNow(date, { includeSeconds: true })} ago</span>
 
         <button type="button" className="delete" onClick={onDeleted}></button>
