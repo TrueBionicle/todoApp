@@ -14,12 +14,6 @@
     box-shadow: rgba(0, 0, 0, 0.03) 0px -2px 1px inset;
 }
 
-/* .addtimer-container {
-    display: flex;
-    width: 30%;
-    justify-content: flex-end;
-} */
-
 .addtimer-item {
     border: none;
     font-size: 24px;
@@ -33,4 +27,16 @@
 
 .error {
     background-color: rgb(218, 130, 130);
+}
+
+.addtimer-item::-webkit-outer-spin-button,
+.addtimer-item::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.addtimer-item,
+.addtimer-item:hover,
+.addtimer-item:focus {
+    appearance: none;
+    -moz-appearance: textfield;
 }

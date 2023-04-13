@@ -21,9 +21,7 @@ export default class Timer extends React.Component {
       this.checkOnDone()
       if (this.state.timerStarted) {
         this.setState(({ minutes, seconds }) => {
-          console.log(this.timeFormat)
           let currentTime = this.setCurrentTime(minutes, seconds)
-          updateTime(id, currentTime.minutes, currentTime.seconds)
           return currentTime
         })
       }
@@ -41,10 +39,6 @@ export default class Timer extends React.Component {
   }
 
   setCurrentTime = (minutes, seconds) => {
-    if (seconds > 59) {
-      let addToMinutes = seconds - 59
-      console.log(addToMinutes)
-    }
     return {
       minutes: function () {
         if (seconds != 0) {
@@ -57,7 +51,7 @@ export default class Timer extends React.Component {
         if (seconds > 0) {
           return this.setTimeFormat(seconds - 1)
         } else {
-          return this.setTimeFormat(59)
+          return this.setTimeFormat(59.99)
         }
       }.call(this),
     }
@@ -72,8 +66,13 @@ export default class Timer extends React.Component {
     this.setState({ timerStarted: false, timer: false })
   }
 
+  componentWillUnmount() {
+    this.props.onUpdateTime(this.props.id, this.state.minutes, this.state.seconds)
+  }
+
   render() {
     const { id } = this.props
+
     if (this.state.minutes != 0 || this.state.seconds != 0) {
       return (
         <div className="timer-container">

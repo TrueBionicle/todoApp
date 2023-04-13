@@ -116,14 +116,13 @@ export default class App extends React.Component {
       const idx = todoData.findIndex((el) => el.id === id)
       todoData[idx].timerMinutes = minutes
       todoData[idx].timerSeconds = seconds
-      console.log(todoData[idx].timerSeconds, seconds)
     })
   }
 
   render() {
     const { todoData, filter } = this.state
     const visibleItems = this.filter(todoData, filter)
-    // console.log('visible', visibleItems)
+
     return (
       <div className="todo-app">
         <AppHeader />

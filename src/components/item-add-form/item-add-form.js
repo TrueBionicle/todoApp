@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 
 import './item-add-form.css'
-// import { th } from 'date-fns/locale'
-
 export default class ItemAddForm extends Component {
   state = {
     label: '',
@@ -17,12 +15,6 @@ export default class ItemAddForm extends Component {
   }
 
   onSetTime = (e, option) => {
-    if (isNaN(+e.target.value)) {
-      e.target.classList.add('error')
-    } else {
-      e.target.classList.remove('error')
-    }
-    e.target.value = e.target.value.replace(/\D/g, '').slice(0, 3)
     this.setState({
       [option]: e.target.value,
     })
@@ -52,6 +44,9 @@ export default class ItemAddForm extends Component {
           value={this.state.label}
         />
         <input
+          type="number"
+          min="0"
+          max="999"
           className="addtimer-item"
           placeholder="Min"
           onChange={(e) => {
@@ -59,6 +54,9 @@ export default class ItemAddForm extends Component {
           }}
         ></input>
         <input
+          type="number"
+          min="0"
+          max="999"
           className="addtimer-item"
           placeholder="Sec"
           onChange={(e) => {
