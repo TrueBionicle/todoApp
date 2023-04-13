@@ -21,8 +21,11 @@ export default class ItemAddForm extends Component {
   }
 
   onSubmit = (e) => {
+    const seconds = this.state.seconds % 60
+    const addToMinutes = Math.round(this.state.seconds / 60)
+    const minutes = +this.state.minutes + addToMinutes
     e.preventDefault()
-    this.props.onAddItem(this.state.label, this.state.minutes, this.state.seconds)
+    this.props.onAddItem(this.state.label, minutes, seconds)
     this.setState({
       label: '',
       minutes: 0,
@@ -56,7 +59,7 @@ export default class ItemAddForm extends Component {
         <input
           type="number"
           min="0"
-          max="999"
+          max="9999"
           className="addtimer-item"
           placeholder="Sec"
           onChange={(e) => {
