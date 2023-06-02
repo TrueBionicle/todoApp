@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './timer.css'
 
-const Timer = ({ id, getTime, onUpdateTime }) => {
+const Timer = ({ id, getTime, onUpdateTime, doneStatus }) => {
   const [time, setTime] = useState(getTime)
   const [isCounting, setIsCounting] = useState(false)
 
@@ -12,7 +12,7 @@ const Timer = ({ id, getTime, onUpdateTime }) => {
 
   useEffect(() => {
     let interval
-    if (isCounting) {
+    if (isCounting && !doneStatus) {
       interval = setInterval(() => {
         setTime((time) => Math.max(time - 1, 0))
       }, 1000)
@@ -20,7 +20,7 @@ const Timer = ({ id, getTime, onUpdateTime }) => {
     return () => {
       clearInterval(interval)
     }
-  }, [isCounting])
+  }, [isCounting, doneStatus])
 
   useEffect(() => {
     let currentTime = time
