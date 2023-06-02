@@ -28,7 +28,7 @@ const Timer = ({ id, getTime, onUpdateTime, doneStatus }) => {
       onUpdateTime(id, currentTime)
     }
   })
-
+  console.log('aaaaa')
   const handleStart = () => {
     setIsCounting(true)
   }
