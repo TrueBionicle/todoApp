@@ -10,10 +10,7 @@ const ItemAddForm = ({ onAddItem }) => {
     e.preventDefault()
     const time = minutes * 60 + +seconds
     onAddItem(label, time)
-
     changeLabel('')
-    setMinutes(0)
-    setSeconds(0)
 
     e.target.reset()
   }

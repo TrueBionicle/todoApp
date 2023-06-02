@@ -16,6 +16,7 @@ const TodoList = ({ todos, onDeleted, onToggleDone, onUpdateTime }) => {
             onDeleted(item.id)
           }}
           getTime={item.time}
+          getStartTime={item.startTime}
           onToggleDone={() => onToggleDone(id)}
           onUpdateTime={onUpdateTime}
         />

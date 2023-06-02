@@ -29,7 +29,10 @@ const App = () => {
 
   const [filterState, changeFilterState] = useState('all')
 
-  const onItemAdded = (text, time = 0) => {
+  const onItemAdded = (text, time) => {
+    if (time <= 0) {
+      time = null
+    }
     if (text) {
       const newItem = createTodoItem(text, time)
       const newArray = [...todoData, newItem]
@@ -58,9 +61,7 @@ const App = () => {
   }
 
   const updateTime = (id, time) => {
-    console.log('update')
     const idx = todoData.findIndex((el) => el.id === id)
-    console.log(todoData[idx])
     if (idx >= 0) {
       todoData[idx].time = time
     }
@@ -100,7 +101,6 @@ const App = () => {
   }
 
   const visibleItems = SetFilter(todoData, filterState)
-
   return (
     <div className="todo-app">
       <AppHeader />

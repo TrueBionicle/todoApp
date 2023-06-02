@@ -4,23 +4,28 @@ import './timer.css'
 const Timer = ({ id, getTime, onUpdateTime }) => {
   const [time, setTime] = useState(getTime)
   const [isCounting, setIsCounting] = useState(false)
+
   const minutes = Math.floor(time / 60)
     .toString()
     .padStart(2, 0)
   const seconds = (time % 60).toString().padStart(2, 0)
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      isCounting && setTime((time) => Math.max(time - 1, 0))
-    }, 100)
+    let interval
+    if (isCounting) {
+      interval = setInterval(() => {
+        setTime((time) => Math.max(time - 1, 0))
+      }, 1000)
+    }
     return () => {
       clearInterval(interval)
     }
   }, [isCounting])
 
   useEffect(() => {
+    let currentTime = time
     return () => {
-      onUpdateTime(id, time)
+      onUpdateTime(id, currentTime)
     }
   })
 
@@ -31,7 +36,8 @@ const Timer = ({ id, getTime, onUpdateTime }) => {
   const handleStop = () => {
     setIsCounting(false)
   }
-  if (time > 0)
+
+  if (time > 0) {
     return (
       <div className="timer-container">
         <button id={id} className="timer-start" onClick={handleStart}></button>
@@ -39,6 +45,11 @@ const Timer = ({ id, getTime, onUpdateTime }) => {
         <p className="timer-time">{`${minutes}:${seconds}`}</p>
       </div>
     )
+  } else {
+    if (time != null) {
+      return <p className="time-end">Time is over</p>
+    }
+  }
 }
 export default Timer
 
