@@ -20,7 +20,7 @@ const Timer = ({ id, getTime, onUpdateTime }) => {
 
   useEffect(() => {
     return () => {
-      onUpdateTime(id, minutes, seconds)
+      onUpdateTime(id, time)
     }
   })
 

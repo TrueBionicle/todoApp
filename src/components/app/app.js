@@ -30,7 +30,6 @@ const App = () => {
   const [filterState, changeFilterState] = useState('all')
 
   const onItemAdded = (text, time = 0) => {
-    console.log(time)
     if (text) {
       const newItem = createTodoItem(text, time)
       const newArray = [...todoData, newItem]
@@ -58,11 +57,12 @@ const App = () => {
     return todoData.filter((item) => !item.done)
   }
 
-  const updateTime = (id, minutes, seconds) => {
+  const updateTime = (id, time) => {
+    console.log('update')
     const idx = todoData.findIndex((el) => el.id === id)
+    console.log(todoData[idx])
     if (idx >= 0) {
-      todoData[idx].timerMinutes = minutes
-      todoData[idx].timerSeconds = seconds
+      todoData[idx].time = time
     }
   }
 
